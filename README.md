@@ -15,3 +15,4 @@ shown as a paragraph after the form. Also  You get an option to download the dat
 In case of any queries, Please feel free to reach out to email mandvisingh64@gmail.com
 
 Explainatory Video available at: https://drive.google.com/file/d/1OlASLcNXTMnRsnSviI-WgHoc-cnVlNyp/view?usp=sharing
+Authorization workflow: https://drive.google.com/file/d/16F6P8gw3sSwSonFLf3zhQfYAAgc1GqnG/view?usp=sharing
