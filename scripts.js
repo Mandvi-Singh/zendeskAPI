@@ -1,3 +1,61 @@
+var current_page = 1;
+var records_per_page = 100;
+
+var objJson = [
+]; // Can be obtained from another source, such as your objJson variable
+
+function prevPage()
+{
+    if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+    }
+}
+
+function nextPage()
+{
+    if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+    }
+}
+    
+function changePage(page)
+{
+    var btn_next = document.getElementById("btn_next");
+    var btn_prev = document.getElementById("btn_prev");
+    var listing_table = document.getElementById("listingTable");
+    var page_span = document.getElementById("page");
+ 
+    // Validate page
+    if (page < 1) page = 1;
+    if (page > numPages()) page = numPages();
+
+    listing_table.innerHTML = "";
+
+    for (var i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
+        listing_table.innerHTML += objJson[i].name + "<br>";
+    }
+    page_span.innerHTML = page;
+
+    if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+    } else {
+        btn_prev.style.visibility = "visible";
+    }
+
+    if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+    } else {
+        btn_next.style.visibility = "visible";
+    }
+}
+
+function numPages()
+{
+    return Math.ceil(objJson.length / records_per_page);
+}
+
 function init() {
   // reset page
   document.getElementById('error-msg').style.display = "none";
@@ -80,11 +138,13 @@ function makeRequest(token, url) {
       if (request.status === 200) {
         var data = JSON.parse(request.responseText);
         var users = data.users;
-        var details_html = '<p style="color: #fff"> Users in your App are: <br>';
-        users.map(user => {
-          details_html += user.name + '<br>';
-        })
-        details_html += '</p>';
+        // var details_html = '<p style="color: #fff"> Users in your App are: <br><ol style="color: #fff">';
+        // users.map(user => {
+        //   details_html += '<li>' + user.name + '</li>';
+        // })
+        // details_html += '</ol></p>';
+        objJson = users;
+        changePage(1);
         var csv = JSON2CSV(users);
         var downloadLink = document.createElement("a");
         var blob = new Blob(["\ufeff", csv]);

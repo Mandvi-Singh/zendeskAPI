@@ -17,12 +17,12 @@
     </div>
     <hr class="sep" />
     <div class="group">
-        <input id="client_id" type="text" />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Client ID</label>
+      <input id="client_id" type="text" />
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Client ID</label>
     </div>
-    
+
     <div class="group">
       <textarea id="url" type="textarea" rows="5"></textarea>
       <span class="highlight"></span>
@@ -33,14 +33,16 @@
       <button id="get-btn" class="btn">Get Data</button>
     </div>
   </form>
-  <!-- <form>
-    <input type="text" id="url" placeholder="URL" />
-    <button id="get-btn">Get User data from URL!</button>
-  </form> -->
 
   <div id="error-msg"></div>
-
   <div id="details"></div>
+<div>
+  <div id="listingTable" style="color: white"></div>
+  <a href="javascript:prevPage()" id="btn_prev">Prev</a>
+  <a href="javascript:nextPage()" id="btn_next">Next</a>
+  page:
+  <span id="page"></span>
+</div>
 
   <script src="scripts.js"></script>
 
